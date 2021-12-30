@@ -1,5 +1,7 @@
-name: Rails
-on: push
+name: Rails tests
+on: 
+  pull_request:
+    branches: [master develop]
 
 jobs:
   verify:

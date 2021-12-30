@@ -9,11 +9,9 @@ module Mutations
       user_params = Hash user_input
       user = User.new(user_params)
 
-      if user.save
-        { user: user, errors: [] }
-      else
-        raise GraphQL::ExecutionError, user.errors.full_messages
-      end
+      raise GraphQL::ExecutionError, user.errors.full_messages unless user.save
+
+      { user: user, errors: [] }
     end
   end
 end

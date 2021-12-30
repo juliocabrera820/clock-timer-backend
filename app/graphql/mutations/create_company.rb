@@ -9,11 +9,9 @@ module Mutations
       company_params = Hash company_input
       company = Company.new(company_params)
 
-      if company.save
-        { company: company, errors: [] }
-      else
-        raise GraphQL::ExecutionError, company.errors.full_messages
-      end
+      raise GraphQL::ExecutionError, company.errors.full_messages unless company.save
+
+      { company: company, errors: [] }
     end
   end
 end

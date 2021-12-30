@@ -9,11 +9,9 @@ module Mutations
       attendance_params = Hash attendance_input
       attendance = Attendance.new(attendance_params)
 
-      if attendance.save
-        { attendance: attendance, errors: [] }
-      else
-        raise GraphQL::ExecutionError, attendance.errors.full_messages
-      end
+      raise GraphQL::ExecutionError, attendance.errors.full_messages unless attendance.save
+
+      { attendance: attendance, errors: [] }
     end
   end
 end

@@ -50,3 +50,5 @@ jobs:
           PGPORT: ${{ job.services.postgres.ports[5432] }}
           RAILS_ENV: test
         run: rspec
+      - name: Run linter
+        run: rubocop

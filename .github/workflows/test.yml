@@ -1,7 +1,9 @@
 name: Rails tests
 on: 
+  push:
+    branches: [ master ]
   pull_request:
-    branches: [master develop]
+    branches: [ develop ]
 
 jobs:
   verify:

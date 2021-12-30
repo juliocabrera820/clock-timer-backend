@@ -9,11 +9,9 @@ module Mutations
       absence_params = Hash absence_input
       absence = Absence.new(absence_params)
 
-      if absence.save
-        { absence: absence, errors: [] }
-      else
-        raise GraphQL::ExecutionError, absence.errors.full_messages
-      end
+      raise GraphQL::ExecutionError, absence.errors.full_messages unless absence.save
+
+      { absence: absence, errors: [] }
     end
   end
 end

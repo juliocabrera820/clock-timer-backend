@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Mutations::CreateAbsence, type: :request do
   describe '.resolve' do
-    let(:user) { FactoryBot.create(:user) }
+    let(:user) { create(:user) }
+
     it 'creates an absence' do
       post '/graphql', params: { query: query(user_id: user.id) }
 

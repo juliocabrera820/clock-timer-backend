@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Mutations::CreateUser, type: :request do
   describe '.resolve' do
-    let(:company) { FactoryBot.create(:company) }
+    let(:department) { FactoryBot.create(:department) }
     it 'creates a user' do
-      post '/graphql', params: { query: query(name: 'bus', email: 'bus@gmail.com', company_id: company.id) }
+      post '/graphql', params: { query: query(name: 'bus', email: 'bus@gmail.com', department_id: department.id) }
+
       expect(response).to have_http_status(:ok)
       expect(JSON.parse(response.body)).to eq(
         {
@@ -22,10 +23,10 @@ RSpec.describe Mutations::CreateUser, type: :request do
       )
     end
 
-    def query(name:, email:, company_id:)
+    def query(name:, email:, department_id:)
       <<~GQL
         mutation {
-          createUser(input: {userInput: {name: "#{name}", email: "#{email}", companyId: "#{company_id}"}}){
+          createUser(input: {userInput: {name: "#{name}", email: "#{email}", departmentId: "#{department_id}"}}){
             user{
               id
               name

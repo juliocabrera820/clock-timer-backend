@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Queries::FetchDailyAbsences, type: :request do
   describe '.resolver' do
     it 'retrieves daily absences' do
-      FactoryBot.create_list(:random_absence, 4)
+      create_list(:random_absence, 4)
       post '/graphql', params: { query: query }
 
       data = JSON.parse(response.body, symbolize_names: true)

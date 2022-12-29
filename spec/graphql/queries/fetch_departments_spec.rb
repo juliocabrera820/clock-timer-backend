@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe Queries::FetchDepartments, type: :request do
   describe '.resolver' do
     it 'retrieves all departments' do
-      FactoryBot.create_list(:random_department, 3)
+      create_list(:random_department, 3)
       post '/graphql', params: { query: query }
-      
+
       data = JSON.parse(response.body, symbolize_names: true)
       departments = data.dig(:data, :fetchDepartments)
 

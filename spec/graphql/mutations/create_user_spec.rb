@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Mutations::CreateUser, type: :request do
   describe '.resolve' do
-    let(:department) { FactoryBot.create(:department) }
+    let(:department) { create(:department) }
+
     it 'creates a user' do
       post '/graphql', params: { query: query(name: 'bus', email: 'bus@gmail.com', department_id: department.id) }
 

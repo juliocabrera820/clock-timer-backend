@@ -1,4 +1,6 @@
-require: rubocop-rails
+require:
+  - rubocop-rails
+  - rubocop-rspec
 AllCops:
   NewCops: enable
   Exclude:
@@ -6,7 +8,6 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'tmp/**/*'
-    - 'spec/**/*'
     - 'app/controllers/**'
     - 'app/graphql/clock_timer_backend_schema.rb'
     - 'Gemfile'

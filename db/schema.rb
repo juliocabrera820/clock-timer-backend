@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_18_140334) do
+ActiveRecord::Schema.define(version: 2022_12_29_013645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_12_18_140334) do
   end
 
   create_table "attendances", force: :cascade do |t|
-    t.integer "type"
+    t.integer "check"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -45,7 +45,15 @@ ActiveRecord::Schema.define(version: 2021_12_18_140334) do
     t.index ["department_id"], name: "index_users_on_department_id"
   end
 
+  create_table "workdays", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_workdays_on_user_id"
+  end
+
   add_foreign_key "absences", "users"
   add_foreign_key "attendances", "users"
   add_foreign_key "users", "departments"
+  add_foreign_key "workdays", "users"
 end

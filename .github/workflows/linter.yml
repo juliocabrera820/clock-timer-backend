@@ -1,0 +1,20 @@
+name: Linter
+on: [pull_request]
+
+jobs:
+  rubocop:
+    name: runner / rubocop
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.2
+      - name: rubocop
+        uses: reviewdog/action-rubocop@v2
+        with:
+          rubocop_version: gemfile
+          rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile
+          reporter: github-pr-review
+          level: warning

@@ -37,6 +37,7 @@ group :development do
   gem 'graphiql-rails'
   gem 'rubocop', '~> 1.12'
   gem 'rubocop-rails', '~> 2.9', require: false
+  gem 'rubocop-rspec'
 end
 
 group :test do

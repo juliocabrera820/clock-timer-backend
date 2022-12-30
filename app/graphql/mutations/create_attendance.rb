@@ -62,7 +62,7 @@ module Mutations
       end
 
       def valid_check_out?
-        raise Errors::WithoutCheckIn unless checked_in?
+        raise Errors::WithoutCheckInError unless checked_in?
         raise Errors::CheckedOutBeforeError unless valid_check_out_time?
         raise Errors::CheckedOutAgainError unless unique_check?(CHECK_OUT)
 

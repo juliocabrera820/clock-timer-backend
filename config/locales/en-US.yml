@@ -1,0 +1,8 @@
+en-US:
+  mutations:
+    errors:
+      invalid_checked_in_error: 'Employee was late'
+      without_check_in_error: 'Employee did not check in'
+      checked_in_again_error: 'Employee tried to check in again'
+      checked_out_again_error: 'Employee tried to check out again'
+      checked_out_before_error: 'Employee tried to check in before'

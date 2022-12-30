@@ -1,0 +1,8 @@
+es-MX:
+  mutations:
+    errors:
+      invalid_checked_in_error: 'El empleado llegó tarde'
+      without_check_in_error: 'El empleado no hizo check in'
+      checked_in_again_error: 'El empleado quiso registrar su entrada nuevamente'
+      checked_out_again_error: 'El empleado quiso registrar su salida nuevamente'
+      checked_out_before_error: 'El empleado registró su salida antes'

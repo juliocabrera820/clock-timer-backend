@@ -9,6 +9,10 @@ RSpec.describe Mutations::CreateAttendance, type: :request do
     valid_check_out_time = Time.zone.local(2022, 9, 20, 18, 0, 0) # 18:00 PM
     invalid_check_out_time = Time.zone.local(2022, 9, 20, 17, 59, 0) # 17:59 PM
 
+    before do
+      I18n.locale = :'en-US'
+    end
+
     after do
       Timecop.return
     end
@@ -65,7 +69,7 @@ RSpec.describe Mutations::CreateAttendance, type: :request do
         Timecop.freeze(valid_check_out_time)
       end
 
-      it 'raises an exception of type WithoutCheckIn' do
+      it 'raises an exception of type WithoutCheckInError' do
         post '/graphql', params: { query: query(user_id: user.id, check: 'check_out') }
 
         formatted_response = JSON.parse(response.body)
@@ -73,7 +77,7 @@ RSpec.describe Mutations::CreateAttendance, type: :request do
         attendance = formatted_response['data']['attendance']
 
         expect(response).to have_http_status(:ok)
-        expect(errors[0]['message']).to eq('El empleado no hizo check in')
+        expect(errors[0]['message']).to eq('Employee did not check in')
         expect(attendance).to be_nil
         expect(user.reload.absences.count).to eq(0)
         expect(user.reload.attendances.count).to eq(0)
@@ -93,7 +97,7 @@ RSpec.describe Mutations::CreateAttendance, type: :request do
         attendance = formatted_response['data']['attendance']
 
         expect(response).to have_http_status(:ok)
-        expect(errors[0]['message']).to eq('El empleado llegó tarde')
+        expect(errors[0]['message']).to eq('Employee was late')
         expect(attendance).to be_nil
         expect(user.reload.absences.count).to eq(1)
         expect(user.reload.attendances.count).to eq(0)
@@ -114,31 +118,10 @@ RSpec.describe Mutations::CreateAttendance, type: :request do
         attendance = formatted_response['data']['attendance']
 
         expect(response).to have_http_status(:ok)
-        expect(errors[0]['message']).to eq('El empleado quiso registrar su entrada nuevamente')
+        expect(errors[0]['message']).to eq('Employee tried to check in again')
         expect(attendance).to be_nil
         expect(user.reload.absences.count).to eq(0)
         expect(user.reload.attendances.count).to eq(1)
-      end
-    end
-
-    context 'when the employee has absence and wants to check out' do
-      before do
-        Timecop.freeze(invalid_check_in_time)
-      end
-
-      it 'raises an exception of type AbsenceError' do
-        post '/graphql', params: { query: query(user_id: user.id, check: 'check_in') }
-        post '/graphql', params: { query: query(user_id: user.id, check: 'check_out') }
-
-        formatted_response = JSON.parse(response.body)
-        errors = formatted_response['errors']
-        attendance = formatted_response['data']['attendance']
-
-        expect(response).to have_http_status(:ok)
-        expect(errors[0]['message']).to eq('El empleado no hizo check in')
-        expect(attendance).to be_nil
-        expect(user.reload.absences.count).to eq(1)
-        expect(user.reload.attendances.count).to eq(0)
       end
     end
 
@@ -157,7 +140,7 @@ RSpec.describe Mutations::CreateAttendance, type: :request do
         attendance = formatted_response['data']['attendance']
 
         expect(response).to have_http_status(:ok)
-        expect(errors[0]['message']).to eq('El empleado registró su salida antes')
+        expect(errors[0]['message']).to eq('Employee tried to check in before')
         expect(attendance).to be_nil
         expect(user.reload.absences.count).to eq(0)
         expect(user.reload.attendances.count).to eq(1)
@@ -180,7 +163,7 @@ RSpec.describe Mutations::CreateAttendance, type: :request do
         attendance = formatted_response['data']['attendance']
 
         expect(response).to have_http_status(:ok)
-        expect(errors[0]['message']).to eq('El empleado quiso registrar su salida nuevamente')
+        expect(errors[0]['message']).to eq('Employee tried to check out again')
         expect(attendance).to be_nil
         expect(user.reload.absences.count).to eq(0)
         expect(user.reload.attendances.count).to eq(2)

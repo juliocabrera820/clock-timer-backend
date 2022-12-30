@@ -11,7 +11,7 @@ RSpec.describe Mutations::CreateDepartment, type: :request do
           'data' => {
             'createDepartment' => {
               'department' => {
-                'id' => '10',
+                'id' => '9',
                 'name' => 'bus'
               },
               'errors' => []

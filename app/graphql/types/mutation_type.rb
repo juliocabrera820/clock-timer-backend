@@ -4,5 +4,6 @@ module Types
     field :create_user, mutation: Mutations::CreateUser
     field :create_absence, mutation: Mutations::CreateAbsence
     field :create_attendance, mutation: Mutations::CreateAttendance
+    field :create_workday, mutation: Mutations::CreateWorkday
   end
 end

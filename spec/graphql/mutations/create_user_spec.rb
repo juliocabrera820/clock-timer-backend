@@ -13,7 +13,7 @@ RSpec.describe Mutations::CreateUser, type: :request do
           'data' => {
             'createUser' => {
               'user' => {
-                'id' => '4',
+                'id' => '10',
                 'name' => 'bus',
                 'email' => 'bus@gmail.com'
               },

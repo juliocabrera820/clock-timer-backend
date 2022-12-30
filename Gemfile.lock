@@ -196,6 +196,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     thor (1.1.0)
+    timecop (0.9.6)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.1.0)
@@ -225,6 +226,7 @@ DEPENDENCIES
   rubocop-rspec
   shoulda-matchers
   spring
+  timecop
   tzinfo-data
 
 RUBY VERSION

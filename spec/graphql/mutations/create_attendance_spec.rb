@@ -135,7 +135,7 @@ RSpec.describe Mutations::CreateAttendance, type: :request do
         attendance = formatted_response['data']['attendance']
 
         expect(response).to have_http_status(:ok)
-        expect(errors[0]['message']).to eq('El empleado tiene una falta hoy')
+        expect(errors[0]['message']).to eq('El empleado no hizo check in')
         expect(attendance).to be_nil
         expect(user.reload.absences.count).to eq(1)
         expect(user.reload.attendances.count).to eq(0)
@@ -164,7 +164,7 @@ RSpec.describe Mutations::CreateAttendance, type: :request do
       end
     end
 
-    context 'when the employee wants to check out again', focus: true do
+    context 'when the employee wants to check out again' do
       before do
         Timecop.freeze(valid_check_in_time)
       end

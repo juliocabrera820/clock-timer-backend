@@ -10,9 +10,7 @@ module Mutations
     TIME_FORMAT = '%H:%M'
     CHECK_IN = 'check_in'
     CHECK_OUT = 'check_out'
-    # TODO: El empleado no puede hacer check out si tiene falta
-    # TODO: El empleado no puede hacer checkout antes de las 6
-    # TODO: El empleado no puede hacer doble check out
+
     def resolve(attendance_input:)
       attendance_params = Hash attendance_input
       attendance = Attendance.new(attendance_params)
@@ -51,10 +49,6 @@ module Mutations
         true
       end
 
-      def has_absence?
-        @user.absences.where(absences: { created_at: Time.zone.today.all_day }).count.positive?
-      end
-
       def valid_check_in_time?
         Time.zone.now <= Time.zone.parse(START_HOUR)
       end
@@ -69,7 +63,6 @@ module Mutations
 
       def valid_check_out?
         raise Errors::WithoutCheckIn unless checked_in?
-        raise Errors::AbsenceError if has_absence?
         raise Errors::CheckedOutBeforeError unless valid_check_out_time?
         raise Errors::CheckedOutAgainError unless unique_check?(CHECK_OUT)
 

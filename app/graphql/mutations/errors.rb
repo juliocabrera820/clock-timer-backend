@@ -6,12 +6,6 @@ module Mutations
       end
     end
 
-    class AbsenceError < GraphQL::ExecutionError
-      def initialize
-        super('El empleado tiene una falta hoy')
-      end
-    end
-
     class WithoutCheckIn < GraphQL::ExecutionError
       def initialize
         super('El empleado no hizo check in')

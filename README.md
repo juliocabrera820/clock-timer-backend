@@ -4,7 +4,7 @@
 [![Forks](https://img.shields.io/github/forks/juliocabrera820/sinatra-demo?color=233D3D4&style=flat)](https://github.com/juliocabrera820/clock-timer-backend/network/members)
 [![Rails Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop-rails)
 
-# JWT Practice
+# Clock timer
 
 Ruby version - 2.7.2
 

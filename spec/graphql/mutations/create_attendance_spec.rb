@@ -9,10 +9,6 @@ RSpec.describe Mutations::CreateAttendance, type: :request do
     valid_check_out_time = Time.zone.local(2022, 9, 20, 18, 0, 0) # 18:00 PM
     invalid_check_out_time = Time.zone.local(2022, 9, 20, 17, 59, 0) # 17:59 PM
 
-    before do
-      I18n.locale = :'en-US'
-    end
-
     after do
       Timecop.return
     end

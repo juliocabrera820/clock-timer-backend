@@ -36,5 +36,9 @@ module ClockTimerBackend
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.i18n.available_locales = ['en-US', 'es-MX', 'en']
+    config.i18n.default_locale = :'en-US'
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+    config.active_job.queue_adapter = :sidekiq
   end
 end

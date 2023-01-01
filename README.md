@@ -10,6 +10,10 @@ Ruby version - 2.7.2
 
 ## Getting started
 
+Install redis
+
+Install postgresql
+
 `bundle install`
 
 ## Database creation
@@ -22,9 +26,9 @@ Ruby version - 2.7.2
 
 `rake db:migrate RAILS_ENV=test`
 
-`bundle exec rspec spec`
+`bundle exec foreman run --env .env.test rspec spec/`
 
 ## Development
 
-Then run `rails s` to run rails app and copy
-the following url in browser `http://localhost:3000/graphiql`
+Then run `foreman start -f Procfile.dev` to run rails app and copy
+the following url in browser `http://localhost:5000/graphiql`

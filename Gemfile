@@ -38,6 +38,7 @@ group :development do
   gem 'rubocop', '~> 1.12'
   gem 'rubocop-rails', '~> 2.9', require: false
   gem 'rubocop-rspec'
+  gem 'foreman'
 end
 
 group :test do
@@ -55,3 +56,5 @@ gem 'graphql'
 
 # translations
 gem 'rails-i18n'
+
+gem 'sidekiq'

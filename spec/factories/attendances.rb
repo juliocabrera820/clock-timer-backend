@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :absence, class: Absence do
+  factory :attendance, class: Attendance do
     user factory: :user
   end
 end

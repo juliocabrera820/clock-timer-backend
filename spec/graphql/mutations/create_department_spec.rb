@@ -6,19 +6,7 @@ RSpec.describe Mutations::CreateDepartment, type: :request do
       post '/graphql', params: { query: query(name: 'bus') }
 
       expect(response).to have_http_status(:ok)
-      expect(JSON.parse(response.body)).to eq(
-        {
-          'data' => {
-            'createDepartment' => {
-              'department' => {
-                'id' => '9',
-                'name' => 'bus'
-              },
-              'errors' => []
-            }
-          }
-        }
-      )
+      expect(response).to match_response_schema('create_department')
     end
 
     def query(name:)

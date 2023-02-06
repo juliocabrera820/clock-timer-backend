@@ -1,0 +1,40 @@
+{
+	"description": "Create absence",
+	"type": "object",
+	"required": [
+		"data"
+	],
+	"properties": {
+		"data": {
+			"properties": {
+				"createAbsence": {
+					"properties": {
+						"absence": {
+							"required": [
+								"id"
+							],
+							"properties": {
+								"id": {
+									"type": "string"
+								}
+							}
+						},
+						"errors": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					},
+					"required": [
+						"absence",
+						"errors"
+					]
+				}
+			},
+			"required": [
+				"createAbsence"
+			]
+		}
+	}
+}

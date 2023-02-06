@@ -1,0 +1,44 @@
+{
+	"description": "Create department",
+	"type": "object",
+	"required": [
+		"data"
+	],
+	"properties": {
+		"data": {
+			"properties": {
+				"createDepartment": {
+					"properties": {
+						"department": {
+							"required": [
+								"id",
+								"name"
+							],
+							"properties": {
+								"id": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string"
+								}
+							}
+						},
+						"errors": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					},
+					"required": [
+						"department",
+						"errors"
+					]
+				}
+			},
+			"required": [
+				"createDepartment"
+			]
+		}
+	}
+}

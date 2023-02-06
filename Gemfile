@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '2.7.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
@@ -36,8 +36,7 @@ group :development do
   gem 'spring'
   gem 'graphiql-rails'
   gem 'rubocop', '~> 1.12'
-  gem 'rubocop-rails', '~> 2.9', require: false
-  gem 'rubocop-rspec'
+  gem 'rubocop-rails'
   gem 'foreman'
 end
 
@@ -48,6 +47,9 @@ group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'timecop'
+  gem 'rubocop-rspec'
+  gem 'rspec-graphql_matchers'
+  gem 'json-schema'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

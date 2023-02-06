@@ -8,18 +8,7 @@ RSpec.describe Mutations::CreateAbsence, type: :request do
       post '/graphql', params: { query: query(user_id: user.id) }
 
       expect(response).to have_http_status(:ok)
-      expect(JSON.parse(response.body)).to eq(
-        {
-          'data' => {
-            'createAbsence' => {
-              'absence' => {
-                'id' => '1'
-              },
-              'errors' => []
-            }
-          }
-        }
-      )
+      expect(response).to match_response_schema('create_absence')
     end
 
     def query(user_id:)

@@ -1,0 +1,48 @@
+{
+	"description": "Create user",
+	"type": "object",
+	"required": [
+		"data"
+	],
+	"properties": {
+		"data": {
+			"properties": {
+				"createUser": {
+					"properties": {
+						"user": {
+							"required": [
+								"id",
+                "name",
+                "email"
+							],
+							"properties": {
+								"id": {
+									"type": "string"
+								},
+                "name": {
+									"type": "string"
+								},
+                "email": {
+									"type": "string"
+								}
+							}
+						},
+						"errors": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					},
+					"required": [
+						"user",
+						"errors"
+					]
+				}
+			},
+			"required": [
+				"createUser"
+			]
+		}
+	}
+}

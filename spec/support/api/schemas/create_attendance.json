@@ -1,0 +1,44 @@
+{
+	"description": "Create attendance",
+	"type": "object",
+	"required": [
+		"data"
+	],
+	"properties": {
+		"data": {
+			"properties": {
+				"createAttendance": {
+					"properties": {
+						"attendance": {
+							"required": [
+								"id",
+								"check"
+							],
+							"properties": {
+								"id": {
+									"type": "string"
+								},
+								"check": {
+									"type": "string"
+								}
+							}
+						},
+						"errors": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					},
+					"required": [
+						"attendance",
+						"errors"
+					]
+				}
+			},
+			"required": [
+				"createAttendance"
+			]
+		}
+	}
+}

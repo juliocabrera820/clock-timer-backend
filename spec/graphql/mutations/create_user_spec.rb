@@ -8,20 +8,7 @@ RSpec.describe Mutations::CreateUser, type: :request do
       post '/graphql', params: { query: query(name: 'bus', email: 'bus@gmail.com', department_id: department.id) }
 
       expect(response).to have_http_status(:ok)
-      expect(JSON.parse(response.body)).to eq(
-        {
-          'data' => {
-            'createUser' => {
-              'user' => {
-                'id' => '9',
-                'name' => 'bus',
-                'email' => 'bus@gmail.com'
-              },
-              'errors' => []
-            }
-          }
-        }
-      )
+      expect(response).to match_response_schema('create_user')
     end
 
     def query(name:, email:, department_id:)

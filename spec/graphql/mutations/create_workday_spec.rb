@@ -28,18 +28,7 @@ RSpec.describe Mutations::CreateWorkday, type: :request do
         expect(user.reload.absences.count).to eq(0)
         expect(user.reload.attendances.count).to eq(2)
         expect(user.reload.workdays.count).to eq(1)
-        expect(JSON.parse(response.body)).to eq(
-          {
-            'data' => {
-              'createWorkday' => {
-                'workday' => {
-                  'id' => '1'
-                },
-                'errors' => []
-              }
-            }
-          }
-        )
+        expect(response).to match_response_schema('create_workday')
       end
     end
 

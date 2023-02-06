@@ -1,0 +1,40 @@
+{
+	"description": "Create workday",
+	"type": "object",
+	"required": [
+		"data"
+	],
+	"properties": {
+		"data": {
+			"properties": {
+				"createWorkday": {
+					"properties": {
+						"workday": {
+							"required": [
+								"id"
+							],
+							"properties": {
+								"id": {
+									"type": "string"
+								}
+							}
+						},
+						"errors": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					},
+					"required": [
+						"workday",
+						"errors"
+					]
+				}
+			},
+			"required": [
+				"createWorkday"
+			]
+		}
+	}
+}

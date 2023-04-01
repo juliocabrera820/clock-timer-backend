@@ -60,3 +60,5 @@ gem 'graphql'
 gem 'rails-i18n'
 
 gem 'sidekiq'
+
+gem 'business_time'

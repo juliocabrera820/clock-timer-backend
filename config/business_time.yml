@@ -1,0 +1,23 @@
+business_time:
+  beginning_of_workday: 9:00 am
+  end_of_workday: 6:00 pm
+  holidays:
+    - January 1st, 2023
+    - February 5th, 2023
+    - March 21th, 2023
+    - April 6th, 2023
+    - April 7th, 2023
+    - May 1st, 2023
+    - September 15th, 2023
+    - September 16th, 2023
+    - November 20th, 2023
+    - December 24th, 2023
+    - December 25th, 2023
+    - December 31th, 2023
+  work_week:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+
